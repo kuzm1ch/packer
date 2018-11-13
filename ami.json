@@ -1,0 +1,34 @@
+{
+    "variables" : {
+        "region" : "us-east-1"
+    },
+    "builders" : [
+        {
+            "type" : "amazon-ebs",
+            "profile" : "default",
+            "region" : "{{user `region`}}",
+            "instance_type" : "t2.micro",
+            "source_ami" : "ami-059eeca93cf09eebd",
+            "ssh_username" : "ubuntu",
+            "ami_name" : "docker-17.12.1-ce-ubuntu",
+            "ami_description" : "Ubuntu 16.04 Image with Docker-CE from source",
+            "run_tags" : {
+                "Name" : "packer-builder-docker",
+                "Tool" : "Packer",
+                "Author" : "mkuzmich"
+            }
+        }
+    ],
+    "provisioners" : [
+        {
+            "type": "file",
+            "source": "./systemd.conf",
+            "destination": "~/docker.service"
+        },
+        {
+            "type" : "shell",
+            "script" : "./setup.sh"
+        }
+
+    ]
+}
