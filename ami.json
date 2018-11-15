@@ -10,7 +10,7 @@
             "instance_type" : "t2.micro",
             "source_ami" : "ami-059eeca93cf09eebd",
             "ssh_username" : "ubuntu",
-            "ami_name" : "docker-17.12.1-ce-ubuntu",
+            "ami_name" : "docker-17.12.1-ce-ubuntu-worker",
             "ami_description" : "Ubuntu 16.04 Image with Docker-CE from source",
             "run_tags" : {
                 "Name" : "packer-builder-docker",
@@ -24,6 +24,11 @@
             "type": "file",
             "source": "./systemd.conf",
             "destination": "~/docker.service"
+        },
+        {
+            "type": "file",
+            "source": "./swarm.sh",
+            "destination": "~/swarm.sh"
         },
         {
             "type" : "shell",

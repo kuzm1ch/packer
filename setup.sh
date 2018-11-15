@@ -6,3 +6,5 @@ sudo cp docker/* /usr/bin/
 sudo mv ~/docker.service /lib/systemd/system/docker.service
 sudo systemctl start docker
 sudo systemctl enable docker
+sudo mv ~/swarm.sh  /var/lib/cloud/scripts/per-boot/.
+sudo chmod +x /var/lib/cloud/scripts/per-boot/swarm.sh
